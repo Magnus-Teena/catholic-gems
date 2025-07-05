@@ -36,7 +36,7 @@ async function loadSections() {
     data.forEach(row => {
       if (row.section && row.reference) {
         const li = document.createElement("li");
-        li.className = "section-item";
+        li.textContent = row.section;
         li.textContent = `${row.section} – ${row.reference}`;
         li.onclick = () => loadQuotes(row.section);
         sectionList.appendChild(li);
