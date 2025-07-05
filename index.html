@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catholic Gems</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Catholic Gems</h1>
+    <select id="languageToggle">
+      <option value="EN">English</option>
+      <option value="TA">தமிழ்</option>
+    </select>
+  </header>
+
+  <main>
+    <section id="sectionList">
+      <h2>Select a Section</h2>
+      <ul id="sections"></ul>
+    </section>
+
+    <section id="quotesArea" style="display:none;">
+      <button id="backBtn">← Back</button>
+      <h2 id="sectionTitle"></h2>
+      <ul id="quotesList"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; Catholic Gems – Free for all</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

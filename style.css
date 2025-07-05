@@ -1,0 +1,90 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+header {
+  background: #6a1b9a;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+#languageToggle {
+  margin-top: 0.5rem;
+  padding: 0.3rem;
+  font-size: 1rem;
+}
+
+main {
+  padding: 1rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+h2 {
+  margin-top: 1.5rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li.section-item {
+  background: #ffffff;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: background 0.2s ease;
+}
+
+li.section-item:hover {
+  background: #f1f1f1;
+}
+
+li.quote-item {
+  background: #fff;
+  margin: 0.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid #6a1b9a;
+  border-radius: 6px;
+  position: relative;
+}
+
+.quote-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+button {
+  background: #6a1b9a;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #4a148c;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: #888;
+}
