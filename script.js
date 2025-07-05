@@ -33,15 +33,26 @@ async function loadSections() {
     const tab = currentLang === "EN" ? "Reference_EN" : "Reference_TA";
     const data = await fetchSheet(tab);
     sectionList.innerHTML = "";
+
+    // Add all actual sections
     data.forEach(row => {
       if (row.section && row.reference) {
         const li = document.createElement("li");
         li.className = "section-item";
-        li.textContent = row.section;  // ✅ Show only section title
+        li.textContent = row.section;
         li.onclick = () => loadQuotes(row.section);
         sectionList.appendChild(li);
       }
     });
+
+    // Add the "Reference" section at the end
+    const refLabel = currentLang === "EN" ? "Reference" : "குறிப்பு";
+    const refLi = document.createElement("li");
+    refLi.className = "section-item";
+    refLi.textContent = refLabel;
+    refLi.onclick = () => loadReferenceSection();
+    sectionList.appendChild(refLi);
+
   } catch (e) {
     sectionList.innerHTML = `<li>Error loading sections</li>`;
     console.error(e);
@@ -62,4 +73,40 @@ async function loadQuotes(sectionName) {
       const quote = row.quote || row.Quote || row[Object.keys(row)[0]];
       if (quote) {
         const li = document.createElement("li");
-        li.className = "quo
+        li.className = "quote-item";
+        li.textContent = quote;
+        quotesList.appendChild(li);
+      }
+    });
+  } catch (e) {
+    quotesList.innerHTML = `<li>Error loading quotes</li>`;
+    console.error(e);
+  }
+}
+
+// 🔄 Reference section: loads only reference values
+async function loadReferenceSection() {
+  quotesList.innerHTML = `<li>Loading...</li>`;
+  sectionTitle.textContent = currentLang === "EN" ? "Reference" : "குறிப்பு";
+  sectionListArea.style.display = "none";
+  quotesArea.style.display = "block";
+
+  const tab = currentLang === "EN" ? "Reference_EN" : "Reference_TA";
+  try {
+    const data = await fetchSheet(tab);
+    quotesList.innerHTML = "";
+    data.forEach(row => {
+      if (row.reference) {
+        const li = document.createElement("li");
+        li.className = "quote-item";
+        li.textContent = row.reference;
+        quotesList.appendChild(li);
+      }
+    });
+  } catch (e) {
+    quotesList.innerHTML = `<li>Error loading references</li>`;
+    console.error(e);
+  }
+}
+
+window.onload = loadSections;
