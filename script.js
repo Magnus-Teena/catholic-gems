@@ -37,7 +37,7 @@ async function loadSections() {
       if (row.section && row.reference) {
         const li = document.createElement("li");
         li.className = "section-item";
-        li.textContent = row.section;
+        li.textContent = row.section;  // ✅ Show only section title
         li.onclick = () => loadQuotes(row.section);
         sectionList.appendChild(li);
       }
@@ -62,35 +62,4 @@ async function loadQuotes(sectionName) {
       const quote = row.quote || row.Quote || row[Object.keys(row)[0]];
       if (quote) {
         const li = document.createElement("li");
-        li.className = "quote-item";
-        li.innerHTML = `
-          ${quote}
-          <div class="quote-actions">
-            <button onclick="copyText('${quote.replace(/'/g, "\\'")}')">Copy</button>
-            <button onclick="shareText('${quote.replace(/'/g, "\\'")}')">Share</button>
-          </div>
-        `;
-        quotesList.appendChild(li);
-      }
-    });
-  } catch (e) {
-    quotesList.innerHTML = `<li>Error loading quotes</li>`;
-    console.error(e);
-  }
-}
-
-function copyText(text) {
-  navigator.clipboard.writeText(text).then(() => {
-    alert("Quote copied to clipboard!");
-  });
-}
-
-function shareText(text) {
-  if (navigator.share) {
-    navigator.share({ text });
-  } else {
-    alert("Share not supported on this device.");
-  }
-}
-
-window.onload = loadSections;
+        li.className = "quo
